@@ -48,6 +48,8 @@
 
 <div class="container">
        <h1 class="bvn">Gestion des spécialité de praticiens de la société GSB</h1>
+    <br/>
+    <br/>
     @yield('content')
 
 </div>

@@ -3,6 +3,7 @@
     <table class="table table-bordered table-striped table-responsive">
 
         <h1>Liste des Praticiens</h1>
+        <br/>
         <thead>
         <tr>
             <th style="width:20%">Nom</th>
@@ -20,8 +21,8 @@
                 <td> {{$unPraticien->ville_praticien}} </td>
                 <td> {{$unPraticien->adresse_praticien}} </td>
                 <td> {{$unPraticien->cp_praticien}} </td>
-                <td style="text-align:center;"><a href="{{url('/modifierFrais')}}/{{$unPraticien->id_praticien}}">
-                        <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="top" title="Modifier"></span></a></td>
+                <td style="text-align:center;"><a href="{{url('/getSpeParPraticien')}}/{{$unPraticien->id_praticien}}">
+                        <span class="glyphicon glyphicon-check" data-toggle="tooltip" data-placement="top" title="Modifier"></span></a></td>
             </tr>
         @endforeach
     </table>
