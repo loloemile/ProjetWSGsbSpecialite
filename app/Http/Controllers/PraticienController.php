@@ -9,6 +9,7 @@ use Exception;
 use App\Exceptions\MonException;
 use App\dao\ServicePraticien;
 
+
 class PraticienController extends Controller
 {
     public function getPraticien(){

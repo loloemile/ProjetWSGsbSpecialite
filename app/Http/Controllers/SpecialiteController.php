@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Request;
+use Illuminate\Support\Facades\Session;
+use Exception;
+use App\Exceptions\MonException;
 use App\dao\ServiceSpecialite;
 
 class SpecialiteController
