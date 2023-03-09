@@ -9,6 +9,7 @@ class Praticien
     protected $fillable=[
         'id_praticien',
         'id_type_praticien',
+        'nom_praticien',
         'prenom_praticien',
         'adresse_praticien',
         'cp_praticien',

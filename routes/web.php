@@ -28,7 +28,7 @@ Route::post('/login', [VisiteurController::class, 'signIn']);
 
 Route::get('/getLogout', [VisiteurController::class, 'signOut']);
 
-
+Route::get('/getListePraticiens',[PraticienController::class, 'getPraticien']);
 
 Route::get('/getListeFrais',[FraisController::class, 'getFraisVisiteur']);
 
