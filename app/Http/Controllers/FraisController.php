@@ -10,6 +10,7 @@ use App\Exceptions\MonException;
 use App\dao\ServiceFrais;
 
 
+
 class FraisController extends Controller
 {
     public function getFraisVisiteur(){
