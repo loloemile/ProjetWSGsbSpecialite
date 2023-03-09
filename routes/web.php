@@ -32,6 +32,8 @@ Route::get('/getListePraticiens',[PraticienController::class, 'getPraticien']);
 
 Route::get('/getListeFrais',[FraisController::class, 'getFraisVisiteur']);
 
+Route::get('/getSpeParPraticien/{id}', [SpecialiteController::class, 'getListeSpecialite']);
+
 Route::get('/modifierFrais/{id}',[FraisController::class, 'updateFrais']);
 
 Route::post('/validerFrais/',
