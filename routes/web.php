@@ -47,6 +47,8 @@ Route::get('/ajouterFrais',[FraisController::class, 'addFrais']);
 
 Route::get('/supprimerFrais/{id}',[FraisController::class, 'supprimeFrais']);
 
+Route::get('/supprimerSpe/{id}',[SpecialiteController::class, 'supprimerSpe']);
+
 Route::get('/getListeFraisHorsForfait/{id}', [HorsForfaitController::class, 'getFraisHorsForfaitVisiteur']);
 
 Route::get('/modifierFraisHorsForfait/{id}',[HorsForfaitController::class, 'updateFraisHorsForfait']);

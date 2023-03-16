@@ -15,8 +15,23 @@ class SpecialiteController
             $monErreur="";
             $unServiceSpe= new ServiceSpecialite();
             $mesSpe= $unServiceSpe->GetSpeParPraticien($id);
-            $titreVue="Modification d'une fiche de Frais";
-            return view('vues/ListeSpecialite', compact('mesSpe', 'titreVue', 'monErreur'));
+            $nomPraticien=$unServiceSpe->GetNom($id);
+            return view('vues/ListeSpecialite', compact('mesSpe', 'nomPraticien', 'monErreur'));
+        }catch (MonException $e){
+            $monErreur= $e->getMessage();
+            return view('vues/error', compact('monErreur'));
+        }catch (MonException $e){
+            $monErreur= $e->getMessage();
+            return view('vues/error', compact('monErreur'));
+        }
+    }
+
+    public function supprimerSpe($id_Spe){
+        try {
+            $erreur="";
+            $unServiceSpe= new ServiceSpecialite();
+            $unServiceSpe->deleteSpe($id_Spe);
+            return redirect('/getListePraticiens');
         }catch (MonException $e){
             $monErreur= $e->getMessage();
             return view('vues/error', compact('monErreur'));
@@ -26,3 +41,4 @@ class SpecialiteController
         }
     }
 }
+
