@@ -61,6 +61,18 @@ class ServiceSpecialite
         }
     }
 
+    public function getTouteSpecialite(){
+        try {
+            $lesSpe= DB::table('specialite')
+                ->Select()
+                ->get();
+            return $lesSpe;
+        }catch (QueryException $e){
+            throw new MonException($e->getMessage(),5);
+        }
+    }
+
+
     public function modifSpe($idPra,$idSpe){
         try {
             DB::table('posseder')

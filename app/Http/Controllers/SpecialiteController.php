@@ -14,9 +14,10 @@ class SpecialiteController
         try {
             $monErreur="";
             $unServiceSpe= new ServiceSpecialite();
-            $mesSpe= $unServiceSpe->GetSpeParPraticien($id);
+            $mesSpePra= $unServiceSpe->GetSpeParPraticien($id);
             $nomPraticien=$unServiceSpe->GetNom($id);
-            return view('vues/ListeSpecialite', compact('mesSpe', 'nomPraticien', 'monErreur'));
+            $mesSpe=$unServiceSpe->getTouteSpecialite();
+            return view('vues/ListeSpecialite', compact('mesSpePra', 'nomPraticien','mesSpe', 'monErreur'));
         }catch (MonException $e){
             $monErreur= $e->getMessage();
             return view('vues/error', compact('monErreur'));
