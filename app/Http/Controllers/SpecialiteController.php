@@ -75,5 +75,24 @@ class SpecialiteController
         }
     }
 
+    public function addSpe(){
+        try {
+            $idSpe= Request::input('id_frais');
+            $idPra= Session::get('id_praticien');
+            $unServiceSpecialite= new ServiceSpecialite();
+            $unServiceSpecialite->addSpe($idSpe, $idPra);
+            $mesSpePra= $unServiceSpecialite->GetSpeParPraticien($idPra);
+            $nomPraticien=$unServiceSpecialite->GetNom($idPra);
+            $mesSpe=$unServiceSpecialite->getTouteSpecialite();
+            return view('vues/ListeSpecialite', compact('mesSpePra', 'nomPraticien','mesSpe', 'monErreur'));
+        }catch (MonException $e){
+            $monErreur= $e->getMessage();
+            return view('vues/error', compact('monErreur'));
+        }catch (MonException $e){
+            $monErreur= $e->getMessage();
+            return view('vues/error', compact('monErreur'));
+        }
+    }
+
 }
 
