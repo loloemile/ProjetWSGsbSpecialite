@@ -64,4 +64,12 @@ Route::get('/ajouterFraisHorsForfait',[HorsForfaitController::class, 'addFraisHo
 
 Route::get('/ModifierFrais/{montant}/{id}',[FraisController::class, 'updateMontant']);
 
+Route::get('/modifierSpe/{id}',[SpecialiteController::class, 'modifSpe']);
+
+Route::post('/modifSpe/',
+    array(
+        'uses'=> 'App\Http\Controllers\SpecialiteController@modifSpecialite',
+        'as'=> 'validerFraisHorsForfait',
+    )
+);
 Route::get('/supprimerFraisHorsForfait/{id}',[HorsForfaitController::class, 'supprimeFraisHorsForfait']);

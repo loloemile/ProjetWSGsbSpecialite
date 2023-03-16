@@ -12,10 +12,10 @@ class ServicePraticien
 {
     public function getPraticien(){
         try {
-            $lesFrais= DB::table('praticien')
+            $lesPracticiens= DB::table('praticien')
                 ->Select()
                 ->get();
-            return $lesFrais;
+            return $lesPracticiens;
         }catch (QueryException $e){
             throw new MonException($e->getMessage(),5);
         }
