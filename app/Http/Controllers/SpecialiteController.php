@@ -29,10 +29,14 @@ class SpecialiteController
 
     public function supprimerSpe($id_Spe){
         try {
-            $erreur="";
-            $unServiceSpe= new ServiceSpecialite();
-            $unServiceSpe->deleteSpe($id_Spe);
-            return redirect('/getListePraticiens');
+            $monErreur="";
+            $idPra=Session::get('id_praticien');
+            $unServiceSpecialite= new ServiceSpecialite();
+            $unServiceSpecialite->deleteSpe($id_Spe);
+            $mesSpePra= $unServiceSpecialite->GetSpeParPraticien($idPra);
+            $nomPraticien=$unServiceSpecialite->GetNom($idPra);
+            $mesSpe=$unServiceSpecialite->getTouteSpecialite();
+            return view('vues/ListeSpecialite', compact('mesSpePra', 'mesSpe','nomPraticien', 'monErreur'));
         }catch (MonException $e){
             $monErreur= $e->getMessage();
             return view('vues/error', compact('monErreur'));
