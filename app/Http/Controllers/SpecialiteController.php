@@ -117,7 +117,5 @@ class SpecialiteController
             return view('vues/error', compact('monErreur'));
         }
     }
-
-
 }
 

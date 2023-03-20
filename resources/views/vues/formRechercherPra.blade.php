@@ -6,8 +6,8 @@
     {!! Form::open(['url' => 'postRechercher']) !!}
     <div class="form-group">
         <div class="col-md-3">
-            <label class="col-md-3 control-label" >Spécialité</label>
-        <div class="col-md-3">
+        <div class="col-md-15">
+            <label class="col-md-3 control-label" >Spécialité :</label>
             <select class="form-control" name="IdSpe"  required>
                 <option value="0">Selectionner une spécialite</option>
                 @foreach($mesSpe as $uneSpe){
@@ -16,7 +16,8 @@
                 @endforeach
             </select>
         </div>
-            <div class="col-md-3">
+            <div class="col-md-15">
+                <label class="col-md-3 control-label" >Nom :</label>
                 <select class="form-control" name="idNomPra"  required>
                     <option value="0">Selectionner un Nom de Praticien</option>
                     @foreach($mesPra as $unPra){
