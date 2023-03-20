@@ -34,7 +34,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse-target">
                 <ul class="nav navbar-nav">
                     <li><a href="/plasse/ProjetGSBSpecialite/public/getListePraticiens" data-toggle="collapse" data-target=".navbar-collapse.in">Liste des praticiens</a></li>
-                    <li><a href="ajouterFrais" data-toggle="collapse" data-target=".navbar-collapse.in">Rechercher un praticien</a></li>
+                    <li><a href="/plasse/ProjetGSBSpecialite/public/RecherchePraticiens" data-toggle="collapse" data-target=".navbar-collapse.in">Rechercher un praticien</a></li>
                     <li><a href="ajouterFrais" data-toggle="collapse" data-target=".navbar-collapse.in">Ajout d'une spécialiter à un praticien</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

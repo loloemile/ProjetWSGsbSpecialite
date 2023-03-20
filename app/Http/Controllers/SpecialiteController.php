@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\dao\ServicePraticien;
 use Request;
 use Illuminate\Support\Facades\Session;
 use Exception;
@@ -99,6 +100,24 @@ class SpecialiteController
             return view('vues/error', compact('monErreur'));
         }
     }
+
+    public function RecherchePraticien(){
+        try {
+            $monErreur="";
+            $unServiceSpe= new ServiceSpecialite();
+            $unServicePra= new ServicePraticien();
+            $mesSpe=$unServiceSpe->getTouteSpecialite();
+            $mesPra=$unServicePra->getPraticien();
+            return view('vues/formRechercherPra', compact('mesSpe', 'mesPra','monErreur'));
+        }catch (MonException $e){
+            $monErreur= $e->getMessage();
+            return view('vues/error', compact('monErreur'));
+        }catch (MonException $e){
+            $monErreur= $e->getMessage();
+            return view('vues/error', compact('monErreur'));
+        }
+    }
+
 
 }
 

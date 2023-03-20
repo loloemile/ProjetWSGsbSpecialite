@@ -30,6 +30,8 @@ Route::get('/getLogout', [VisiteurController::class, 'signOut']);
 
 Route::get('/getListePraticiens',[PraticienController::class, 'getPraticien']);
 
+Route::get('/RecherchePraticiens',[SpecialiteController::class, 'RecherchePraticien']);
+
 Route::get('/getListeFrais',[FraisController::class, 'getFraisVisiteur']);
 
 Route::get('/getSpeParPraticien/{id}', [SpecialiteController::class, 'getListeSpecialite']);
