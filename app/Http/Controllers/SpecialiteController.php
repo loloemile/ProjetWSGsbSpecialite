@@ -76,10 +76,11 @@ class SpecialiteController
         }
     }
 
-    public function addSpe(){
+    public function ajoutSpecialite(){
         try {
-            $idSpe= Request::input('id_frais');
+            $idSpe= Request::input('idSpe');
             $idPra= Session::get('id_praticien');
+            $monErreur="";
             $unServiceSpecialite= new ServiceSpecialite();
             $unServiceSpecialite->addSpe($idSpe, $idPra);
             $mesSpePra= $unServiceSpecialite->GetSpeParPraticien($idPra);

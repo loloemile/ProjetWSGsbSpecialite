@@ -75,7 +75,7 @@ Route::post('/modifSpe/',
 
 Route::post('/addSpecialite/',
     array(
-        'uses'=> 'App\Http\SpecialiteController@modifSpecialite',
+        'uses'=> 'App\Http\Controllers\SpecialiteController@ajoutSpecialite',
         'as'=> 'addSpecialite',
     )
 );

@@ -21,7 +21,7 @@
             </tr>
         @endforeach
     </table>
-    {!! Form::open(['url' => 'ajoutSpe']) !!}
+    {!! Form::open(['url' => 'addSpecialite']) !!}
     <div class="col-md-12 well well-md">
         <center><h1>Ajout d'une spécialité</h1></center>
         <div class="form-horizontal">

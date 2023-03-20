@@ -84,4 +84,19 @@ class ServiceSpecialite
             throw new MonException($e->getMessage(),5);
         }
     }
+
+    public function addSpe($idPra, $idSpe)
+    {
+        try {
+            DB::table('posseder')->insert(
+                ['id_praticien' => $idSpe,
+                    'id_specialite' => $idPra,
+                    'diplome' => 'BAC+5',
+                    'coef_prescription' => 8]
+            );
+        }catch (QueryException $e){
+            throw new MonException($e->getMessage(),5);
+        }
+    }
+
 }
