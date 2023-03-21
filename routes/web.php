@@ -82,3 +82,10 @@ Route::post('/addSpecialite/',
     )
 );
 Route::get('/supprimerFraisHorsForfait/{id}',[HorsForfaitController::class, 'supprimeFraisHorsForfait']);
+
+Route::post('/postRechercher/',
+    array(
+        'uses'=> 'App\Http\Controllers\SpecialiteController@RechercheSpeNom',
+        'as'=> 'postRechercher',
+    )
+);

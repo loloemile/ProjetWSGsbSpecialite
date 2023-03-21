@@ -117,5 +117,28 @@ class SpecialiteController
             return view('vues/error', compact('monErreur'));
         }
     }
+
+    public function RechercheSpeNom(){
+        try {
+            $monErreur="";
+            $idSpe= Request::input('IdSpe');
+            $NomPra= Request::input('idNomPra');
+            $unServicePra= new ServicePraticien();
+            if ($idSpe==0){
+                $mesPraticiens=$unServicePra->getPraticienParId($NomPra);
+                return view('Vues/ListePraticien', compact('mesPraticiens', 'monErreur'));
+            }else{
+                $mesPraticiens=$unServicePra->getPraParSpe($idSpe);
+                return view('Vues/ListePraticien', compact('mesPraticiens', 'monErreur'));
+            }
+
+        }catch (MonException $e){
+            $monErreur= $e->getMessage();
+            return view('vues/error', compact('monErreur'));
+        }catch (MonException $e){
+            $monErreur= $e->getMessage();
+            return view('vues/error', compact('monErreur'));
+        }
+    }
 }
 

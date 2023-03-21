@@ -29,4 +29,8 @@ class PraticienController extends Controller
 
         }
     }
+
+
+
+
 }

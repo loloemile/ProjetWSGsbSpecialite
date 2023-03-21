@@ -14,8 +14,36 @@ class ServicePraticien
         try {
             $lesPracticiens= DB::table('praticien')
                 ->Select()
+                ->orderBy('nom_praticien')
                 ->get();
             return $lesPracticiens;
+        }catch (QueryException $e){
+            throw new MonException($e->getMessage(),5);
+        }
+    }
+
+    public function getPraticienParId($NomPra){
+        try {
+            $lesPracticiens= DB::table('praticien')
+                ->Select()
+                ->where('nom_praticien','=',$NomPra)
+                ->get();
+            return $lesPracticiens;
+        }catch (QueryException $e){
+            throw new MonException($e->getMessage(),5);
+        }
+    }
+
+    public function getPraParSpe($idSpe){
+        try {
+            $lesPra= DB::table('praticien')
+                ->Select()
+                ->join('posseder', 'posseder.id_praticien','=','praticien.id_praticien')
+                ->join('specialite','posseder.id_specialite','=','specialite.id_specialite')
+                ->where('specialite.id_specialite','=',$idSpe)
+                ->orderBy('specialite.lib_specialite')
+                ->get();
+            return $lesPra;
         }catch (QueryException $e){
             throw new MonException($e->getMessage(),5);
         }

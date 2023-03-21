@@ -18,10 +18,10 @@
         </div>
             <div class="col-md-15">
                 <label class="col-md-3 control-label" >Nom :</label>
-                <select class="form-control" name="idNomPra"  required>
+                <select class="form-control" name="NomPra"  required>
                     <option value="0">Selectionner un Nom de Praticien</option>
                     @foreach($mesPra as $unPra){
-                    <option value="{{$unPra->id_praticien}}">{{$unPra->nom_praticien}}</option>
+                    <option value="{{$unPra->nom_praticien}}">{{$unPra->nom_praticien}}</option>
                     }
                     @endforeach
                 </select>
