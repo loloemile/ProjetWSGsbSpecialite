@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+    @if(Session::get('id')>0)
     <table class="table table-bordered table-striped table-responsive">
 
         <h1>Liste des Praticiens</h1>
@@ -26,5 +27,6 @@
             </tr>
         @endforeach
     </table>
+    @endif
 @stop
 

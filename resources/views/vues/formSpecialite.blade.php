@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+    @if(Session::get('type')=='A')
     {!! Form::open(['url' => 'modifSpe']) !!}
     <div class="col-md-12 well well-md">
         <center><h1>Modification spécialité</h1></center>
@@ -25,6 +26,7 @@
             </div>
         </div>
     </div>
+    @endif
 @stop
 
 

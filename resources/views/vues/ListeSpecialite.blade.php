@@ -1,26 +1,32 @@
 @extends('layouts.master')
 @section('content')
+    @if(Session::get('id')>0)
     <table class="table table-bordered table-striped table-responsive">
 
         <h1>Liste des spécialité du practicien {{$nomPraticien->nom_praticien}} </h1>
         <br/>
         <thead>
         <tr>
-            <th style="width:20%">Spécialité</th>
-            <th style="width:20%">Modifier</th>
-            <th style="width:20%">Supprimer</th>
+            <th style="width:10%">Spécialité</th>
+            @if(Session::get('type')=='A')
+            <th style="width:5%">Modifier</th>
+            <th style="width:5%">Supprimer</th>
+            @endif
         </tr>
         </thead>
         @foreach($mesSpePra as $uneSpe)
             <tr>
                 <td> {{$uneSpe->lib_specialite}} </td>
+                @if(Session::get('type')=='A')
                 <td style="text-align:center;"><a href="{{url('/modifierSpe')}}/{{$uneSpe->id_specialite}}">
                         <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="top" title="VoirSpecialite"></span></a></td>
                 <td style="text-align:center;"><a href="{{url('/supprimerSpe')}}/{{$uneSpe->id_specialite}}">
                         <span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="VoirSpecialite"></span></a></td>
+                @endif
             </tr>
         @endforeach
     </table>
+    @if(Session::get('type')=='A')
     {!! Form::open(['url' => 'addSpecialite']) !!}
     <div class="col-md-12 well well-md">
         <center><h1>Ajout d'une spécialité</h1></center>
@@ -46,5 +52,7 @@
             </div>
         </div>
     </div>
+    @endif
+    @endif
 @stop
 

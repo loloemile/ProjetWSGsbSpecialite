@@ -26,7 +26,7 @@ class ServicePraticien
         try {
             $lesPracticiens= DB::table('praticien')
                 ->Select()
-                ->where('nom_praticien','=',$NomPra)
+                ->where('nom_praticien','like',$NomPra.'%')
                 ->orderBy('nom_praticien')
                 ->get();
             return $lesPracticiens;

@@ -32,39 +32,9 @@ Route::get('/getListePraticiens',[PraticienController::class, 'getPraticien']);
 
 Route::get('/RecherchePraticiens',[SpecialiteController::class, 'RecherchePraticien']);
 
-Route::get('/getListeFrais',[FraisController::class, 'getFraisVisiteur']);
-
 Route::get('/getSpeParPraticien/{id}', [SpecialiteController::class, 'getListeSpecialite']);
 
-Route::get('/modifierFrais/{id}',[FraisController::class, 'updateFrais']);
-
-Route::post('/validerFrais/',
-    array(
-        'uses'=> 'App\Http\Controllers\FraisController@validateFrais',
-        'as'=> 'validerFrais',
-    )
-);
-
-Route::get('/ajouterFrais',[FraisController::class, 'addFrais']);
-
-Route::get('/supprimerFrais/{id}',[FraisController::class, 'supprimeFrais']);
-
 Route::get('/supprimerSpe/{id}',[SpecialiteController::class, 'supprimerSpe']);
-
-Route::get('/getListeFraisHorsForfait/{id}', [HorsForfaitController::class, 'getFraisHorsForfaitVisiteur']);
-
-Route::get('/modifierFraisHorsForfait/{id}',[HorsForfaitController::class, 'updateFraisHorsForfait']);
-
-Route::post('/validerFraisHorsForfait/',
-    array(
-        'uses'=> 'App\Http\Controllers\HorsForfaitController@validateFraisHorsForfait',
-        'as'=> 'validerFraisHorsForfait',
-    )
-);
-
-Route::get('/ajouterFraisHorsForfait',[HorsForfaitController::class, 'addFraisHorsForfait']);
-
-Route::get('/ModifierFrais/{montant}/{id}',[FraisController::class, 'updateMontant']);
 
 Route::get('/modifierSpe/{id}',[SpecialiteController::class, 'modifSpe']);
 
@@ -81,7 +51,6 @@ Route::post('/addSpecialite/',
         'as'=> 'addSpecialite',
     )
 );
-Route::get('/supprimerFraisHorsForfait/{id}',[HorsForfaitController::class, 'supprimeFraisHorsForfait']);
 
 Route::post('/postRechercher/',
     array(

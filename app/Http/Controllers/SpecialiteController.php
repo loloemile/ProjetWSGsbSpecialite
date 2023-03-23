@@ -123,7 +123,7 @@ class SpecialiteController
         try {
             $monErreur="";
             $idSpe= Request::input('IdSpe');
-            $NomPra= Request::input('NomPra');
+            $NomPra= Request::input('nom_praticien');
             $unServicePra= new ServicePraticien();
             if ($idSpe==0){
                 $mesPraticiens=$unServicePra->getPraticienParId($NomPra);
