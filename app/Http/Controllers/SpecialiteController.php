@@ -17,7 +17,8 @@ class SpecialiteController
             $unServiceSpe= new ServiceSpecialite();
             $mesSpePra= $unServiceSpe->GetSpeParPraticien($id);
             $nomPraticien=$unServiceSpe->GetNom($id);
-            $mesSpe=$unServiceSpe->getTouteSpecialite();
+            $mesSpe=$unServiceSpe->getSpecialite2($id);
+
             return view('vues/ListeSpecialite', compact('mesSpePra', 'nomPraticien','mesSpe', 'monErreur'));
         }catch (MonException $e){
             $monErreur= $e->getMessage();
@@ -36,7 +37,7 @@ class SpecialiteController
             $unServiceSpecialite->deleteSpe($id_Spe);
             $mesSpePra= $unServiceSpecialite->GetSpeParPraticien($idPra);
             $nomPraticien=$unServiceSpecialite->GetNom($idPra);
-            $mesSpe=$unServiceSpecialite->getTouteSpecialite();
+            $mesSpe=$unServiceSpecialite->getSpecialite2($idPra);
             return view('vues/ListeSpecialite', compact('mesSpePra', 'mesSpe','nomPraticien', 'monErreur'));
         }catch (MonException $e){
             $monErreur= $e->getMessage();
@@ -70,7 +71,7 @@ class SpecialiteController
             $unServiceSpe->modifSpe($idPra,$idSpe);
             $mesSpePra= $unServiceSpe->GetSpeParPraticien($idPra);
             $nomPraticien=$unServiceSpe->GetNom($idPra);
-            $mesSpe=$unServiceSpe->getTouteSpecialite();
+            $mesSpe=$unServiceSpe->getSpecialite2($idPra);
             return view('vues/ListeSpecialite', compact('mesSpePra', 'mesSpe','nomPraticien', 'monErreur'));
         }catch (MonException $e){
             $monErreur= $e->getMessage();
@@ -90,7 +91,7 @@ class SpecialiteController
             $unServiceSpecialite->addSpe($idSpe, $idPra);
             $mesSpePra= $unServiceSpecialite->GetSpeParPraticien($idPra);
             $nomPraticien=$unServiceSpecialite->GetNom($idPra);
-            $mesSpe=$unServiceSpecialite->getTouteSpecialite();
+            $mesSpe=$unServiceSpecialite->getSpecialite2($idPra);
             return view('vues/ListeSpecialite', compact('mesSpePra', 'nomPraticien','mesSpe', 'monErreur'));
         }catch (MonException $e){
             $monErreur= $e->getMessage();

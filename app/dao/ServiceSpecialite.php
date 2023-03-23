@@ -53,6 +53,31 @@ class ServiceSpecialite
             throw new MonException($e->getMessage(),5);
         }
     }
+    public function getSpecialite2($id){
+        try {
+            /* $lesSpe= DB::table('specialite')
+                 ->Select()
+                 ->where('id_specialite','!=', $id_Spe)
+                 ->get();
+             Session::put('id_specialite', $id_Spe);
+             return $lesSpe;
+
+             return $specialites;*/
+            $id_pra=$id;
+            $lesSpe = DB::table('specialite')
+                ->whereNotExists(function ($query) use ($id_pra) {
+                    $query->select(DB::raw(1))
+                        ->from('posseder')
+                        ->whereRaw('specialite.id_specialite = posseder.id_specialite')
+                        ->where('posseder.id_praticien', '=', $id_pra);
+                })
+                ->get();
+            return $lesSpe;
+
+        }catch (QueryException $e){
+            throw new MonException($e->getMessage(),5);
+        }
+    }
 
     public function getSpecialite($id_Spe){
         try {
