@@ -2,10 +2,16 @@
 
 namespace App\dao;
 
+use App\metier\Specialite;
 use Illuminate\Database\QueryException;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Exceptions\MonException;
+use Illuminate\Database\Eloquent\Model;
+
+
+
 
 class ServiceSpecialite
 {
@@ -50,12 +56,26 @@ class ServiceSpecialite
 
     public function getSpecialite($id_Spe){
         try {
-            $lesSpe= DB::table('specialite')
+           /* $lesSpe= DB::table('specialite')
                 ->Select()
                 ->where('id_specialite','!=', $id_Spe)
                 ->get();
             Session::put('id_specialite', $id_Spe);
             return $lesSpe;
+
+            return $specialites;*/
+            $id_pra=Session::get('id_praticien');
+            $lesSpe = DB::table('specialite')
+                ->whereNotExists(function ($query) use ($id_pra) {
+                    $query->select(DB::raw(1))
+                        ->from('posseder')
+                        ->whereRaw('specialite.id_specialite = posseder.id_specialite')
+                        ->where('posseder.id_praticien', '=', $id_pra);
+                })
+                ->get();
+            Session::put('id_specialite', $id_Spe);
+            return $lesSpe;
+
         }catch (QueryException $e){
             throw new MonException($e->getMessage(),5);
         }

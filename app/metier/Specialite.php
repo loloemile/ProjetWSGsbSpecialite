@@ -2,6 +2,9 @@
 
 namespace App\metier;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+
 class Specialite
 {
     protected  $table='specialite';
@@ -10,4 +13,6 @@ class Specialite
         'id_specialite',
         'lib_specialite'
     ];
+
+
 }
