@@ -43,17 +43,17 @@ class ServiceSpecialite
         }
     }
 
-    public function deleteSpe($id_Spe){
+    public function deleteSpe($id_pra, $id_Spe){
         try {
             DB::table('posseder')
                 ->where('id_specialite', '=', $id_Spe)
-                ->where('id_praticien','=',Session::get('id_praticien'))
+                ->where('id_praticien','=',$id_pra)
                 ->delete();
         }catch (QueryException $e){
             throw new MonException($e->getMessage(),5);
         }
     }
-    public function getSpecialite2($id){
+    public function getSansSpecialite($id){
         try {
             /* $lesSpe= DB::table('specialite')
                  ->Select()
@@ -118,12 +118,12 @@ class ServiceSpecialite
     }
 
 
-    public function modifSpe($idPra,$idSpe){
+    public function modifSpe($idPra,$idSpe,$NewIdSpe){
         try {
             DB::table('posseder')
                 ->where('id_praticien', '=', $idPra)
-                ->where('id_specialite','=',Session::get('id_specialite'))
-                ->update(['id_specialite'=> $idSpe]);
+                ->where('id_specialite','=',$idSpe)
+                ->update(['id_specialite'=> $NewIdSpe]);
         }catch (QueryException $e){
 
             throw new MonException($e->getMessage(),5);

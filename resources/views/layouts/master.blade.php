@@ -20,12 +20,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar+ bvn"></span>
                 </button>
-                <a class="navbar-brand" href="">GSB Frais</a>
+                <a href="{{ url('/') }}" class="navbar-brand" href="">GSB Frais</a>
             </div>
             @if(Session::get('id')==0)
             <div class="collapse navbar-collapse" id="navbar-collapse-target">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/plasse/ProjetGSBSpecialite/public/getlogin" data-toggle="collapse" data-target=".navbar-collapse.in">Se connecter</a></li>
+                    <li><a href="{{ url('/getlogin') }}"  data-toggle="collapse" data-target=".navbar-collapse.in">Se connecter</a></li>
                 </ul>
             </div>
             @endif
@@ -33,11 +33,11 @@
             @if(Session::get('id')>0)
             <div class="collapse navbar-collapse" id="navbar-collapse-target">
                 <ul class="nav navbar-nav">
-                    <li><a href="/plasse/ProjetGSBSpecialite/public/getListePraticiens" data-toggle="collapse" data-target=".navbar-collapse.in">Liste des praticiens</a></li>
-                    <li><a href="/plasse/ProjetGSBSpecialite/public/RecherchePraticiens" data-toggle="collapse" data-target=".navbar-collapse.in">Rechercher un praticien</a></li>
+                    <li><a href="{{ url('/getListePraticiens') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Liste des praticiens</a></li>
+                    <li><a href="{{ url('/RecherchePraticiens') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Rechercher un praticien</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/plasse/ProjetGSBSpecialite/public/getLogout" data-toggle="collapse" data-target=".navbar-collapse.in">Se déconnecter</a></li>
+                    <li><a href="{{ url('/getLogout') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Se déconnecter</a></li>
                 </ul>
             </div>
             @endif

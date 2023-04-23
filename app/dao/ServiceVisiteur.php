@@ -7,7 +7,7 @@ class ServiceVisiteur
 {
     public function login($login, $pwd)
     {
-        $connected = false;
+        $connected = null;
         try {
             $visiteur = DB::table('visiteur')
                 ->select()
@@ -17,7 +17,7 @@ class ServiceVisiteur
                 if ($visiteur->pwd_visiteur == $pwd) {
                     Session::put('id', $visiteur->id_visiteur);
                     Session::put('type', $visiteur->type_visiteur);
-                    $connected = true;
+                    $connected = $visiteur;
                 }
             }
         } catch (QueryException $e) {

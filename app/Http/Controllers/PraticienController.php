@@ -19,7 +19,8 @@ class PraticienController extends Controller
             Session::forget('monErreur');
             $unServicePraticien= new ServicePraticien();
             $mesPraticiens= $unServicePraticien->getPraticien();
-            return view('Vues/ListePraticien', compact('mesPraticiens', 'erreur'));
+            return json_encode($mesPraticiens);
+           // return view('vues/ListePraticien', compact('mesPraticiens', 'erreur'));
         }catch (MonException $e){
             $monErreur= $e->getMessage();
             return view('vues/error', compact('monErreur'));
