@@ -33,7 +33,7 @@ class ServiceSpecialite
     public function GetNom($id){
         try {
             $nom= DB::table('praticien')
-                ->Select('nom_praticien')
+                ->Select()
                 ->where('id_praticien','=',$id)
                 ->first();
             Session::put('id_praticien', $id);

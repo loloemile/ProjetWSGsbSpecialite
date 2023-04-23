@@ -33,7 +33,7 @@ Route::post('/login', [VisiteurController::class, 'signIn'])->middleware('cors')
 
 Route::get('/getLogout', [VisiteurController::class, 'signOut']);
 
-Route::get('/getNomPraticiens/{id}',[SpecialiteController::class, 'getNomPraticien'])->middleware('cors');
+Route::get('/getNomPraticien/{id}',[SpecialiteController::class, 'getNomPraticien'])->middleware('cors');
 
 Route::get('/getListePraticiens',[PraticienController::class, 'getPraticien'])->middleware('cors');
 

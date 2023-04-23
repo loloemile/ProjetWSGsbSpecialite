@@ -35,6 +35,7 @@ class SpecialiteController
             $unServiceSpe= new ServiceSpecialite();
             $nomPra= $unServiceSpe->GetNom($id);
             return json_encode($nomPra);
+
         }catch (MonException $e){
             $monErreur= $e->getMessage();
             return json_encode($monErreur);
