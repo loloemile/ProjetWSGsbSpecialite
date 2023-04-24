@@ -7,7 +7,6 @@ use App\Http\Controllers\FraisController;
 use App\Http\Controllers\HorsForfaitController;
 use App\Http\Controllers\PraticienController;
 use App\Http\Controllers\SpecialiteController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -67,4 +66,3 @@ Route::post('/postRechercher',
         'as'=> 'postRecherche',
     )
 )->middleware('cors');
-
