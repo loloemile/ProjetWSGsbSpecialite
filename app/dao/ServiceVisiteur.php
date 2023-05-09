@@ -1,6 +1,7 @@
 <?php
 namespace App\dao;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class ServiceVisiteur
@@ -14,7 +15,7 @@ class ServiceVisiteur
                 ->where('login_visiteur', '=', $login)
                 ->first();
             if ($visiteur) {
-                if ($visiteur->pwd_visiteur == $pwd) {
+                if (Hash::check($pwd, $visiteur->pwd_visiteur))  {
                     Session::put('id', $visiteur->id_visiteur);
                     Session::put('type', $visiteur->type_visiteur);
                     $connected = $visiteur;

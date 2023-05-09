@@ -22,7 +22,7 @@ class ServicePraticien
         }
     }
 
-    public function getPraticienParId($NomPra){
+    public function getPraticienParNom($NomPra){
         try {
             $lesPracticiens= DB::table('praticien')
                 ->Select()

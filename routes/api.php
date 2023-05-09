@@ -26,25 +26,25 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/getlogin', [VisiteurController::class, 'getLogin'])->middleware('cors');
+Route::get('/getlogin', [VisiteurController::class, 'getLogin']);
 
 Route::post('/login', [VisiteurController::class, 'signIn'])->middleware('cors');
 
 Route::get('/getLogout', [VisiteurController::class, 'signOut']);
 
-Route::get('/getNomPraticien/{id}',[SpecialiteController::class, 'getNomPraticien'])->middleware('cors');
+Route::get('/getNomPraticien/{id}',[SpecialiteController::class, 'getNomPraticien']);
 
-Route::get('/getListePraticiens',[PraticienController::class, 'getPraticien'])->middleware('cors');
+Route::get('/getListePraticiens',[PraticienController::class, 'getPraticien']);
 
-Route::get('/RecherchePraticiens',[SpecialiteController::class, 'RecherchePraticien'])->middleware('cors');
+Route::get('/RecherchePraticiens',[SpecialiteController::class, 'RecherchePraticien']);
 
-Route::get('/getSpeParPraticien/{id}', [SpecialiteController::class, 'getListeSpecialite'])->middleware('cors');
+Route::get('/getSpeParPraticien/{id}', [SpecialiteController::class, 'getListeSpecialite']);
 
-Route::get('/getSansSpeParPraticien/{id}', [SpecialiteController::class, 'getSansSpePraticien'])->middleware('cors');
+Route::get('/getSansSpeParPraticien/{id}', [SpecialiteController::class, 'getSansSpePraticien']);
 
-Route::get('/supprimerSpe/{idPraticien}/{idSpecialite}',[SpecialiteController::class, 'supprimerSpe'])->middleware('cors');
+Route::get('/supprimerSpe/{idPraticien}/{idSpecialite}',[SpecialiteController::class, 'supprimerSpe']);
 
-Route::get('/modifierSpe/{id}',[SpecialiteController::class, 'modifSpe'])->middleware('cors');
+Route::get('/modifierSpe/{id}',[SpecialiteController::class, 'modifSpe']);
 
 Route::post('/modifSpe',
     array(
@@ -60,9 +60,16 @@ Route::post('/addSpecialite',
     )
 )->middleware('cors');
 
-Route::post('/postRechercher',
+Route::post('/postRechercherSpe',
     array(
-        'uses'=> 'App\Http\Controllers\SpecialiteController@RechercheSpeNom',
-        'as'=> 'postRecherche',
+        'uses'=> 'App\Http\Controllers\SpecialiteController@RechercheSpe',
+        'as'=> 'postRechercherSpe',
+    )
+)->middleware('cors');
+
+Route::post('/postRechercherNom',
+    array(
+        'uses'=> 'App\Http\Controllers\SpecialiteController@RechercheNom',
+        'as'=> 'postRechercherNom',
     )
 )->middleware('cors');

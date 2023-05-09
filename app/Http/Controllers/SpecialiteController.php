@@ -174,22 +174,41 @@ class SpecialiteController
         }
     }
 
-    public function RechercheSpeNom(){
+    public function RechercheSpe(){
         try {
-            $monErreur="";
-            $idSpe= Request::input('IdSpe');
-            $NomPra= Request::input('nom_praticien');
-            $unServicePra= new ServicePraticien();
-            if ($idSpe==0){
-                $mesPraticiens=$unServicePra->getPraticienParId($NomPra);
-                //return view('vues/ListePraticien', compact('mesPraticiens', 'monErreur'));
-            }else{
+            $json = file_get_contents('php://input'); // Récupération du flux JSON
+            $AjoutJson = json_decode($json);
+            if ($AjoutJson != null) {
+                $idSpe = $AjoutJson->IdSpe;
+                $unServicePra= new ServicePraticien();
                 $mesPraticiens=$unServicePra->getPraParSpe($idSpe);
                 //return view('vues/ListePraticien', compact('mesPraticiens', 'monErreur'));
+                return json_encode($mesPraticiens);
+                //return view('vues/ListeSpecialite', compact('mesSpePra', 'nomPraticien','mesSpe', 'monErreur'));
             }
+        }catch (MonException $e){
+            $monErreur= $e->getMessage();
+            return json_encode($monErreur);
+            //return view('vues/error', compact('monErreur'));
+        }catch (MonException $e){
+            $monErreur= $e->getMessage();
+            return json_encode($monErreur);
+            //return view('vues/error', compact('monErreur'));
+        }
+    }
 
-            return json_encode($mesPraticiens);
-
+    public function RechercheNom(){
+        try {
+            $json = file_get_contents('php://input'); // Récupération du flux JSON
+            $AjoutJson = json_decode($json);
+            if ($AjoutJson != null) {
+                $nomPra = $AjoutJson->nom_praticien;
+                $unServicePra= new ServicePraticien();
+                $mesPraticiens=$unServicePra->getPraticienParNom($nomPra);
+                //return view('vues/ListePraticien', compact('mesPraticiens', 'monErreur'));
+                return json_encode($mesPraticiens);
+                //return view('vues/ListeSpecialite', compact('mesSpePra', 'nomPraticien','mesSpe', 'monErreur'));
+            }
         }catch (MonException $e){
             $monErreur= $e->getMessage();
             return json_encode($monErreur);
